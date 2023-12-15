@@ -2,6 +2,19 @@ class Coffee:
     def __init__(self, name):
         self.name = name
 
+    @property
+    def name(self):
+        return self._name
+    
+    @name.setter
+    def name(self, name):
+        if isinstance(name, str):
+            if hasattr(self, "name"):
+                self._name = name
+        else:
+            raise Exception("coffe.name already exists")
+            
+
     def __repr__(self):
         return f"Coffee: {self.name}"
 

@@ -2,6 +2,17 @@ class Customer:
     def __init__(self, name):
         self.name = name
 
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        if isinstance(name, str):
+            if len(name) >= 1 and len(name) <= 15:
+                self._name = name
+        else: raise Exception("Name must be a string between 1-15 characters long")
+
     def __repr__(self):
         return f"Customer: {self.name}"
 
