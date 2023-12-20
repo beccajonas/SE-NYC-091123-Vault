@@ -36,7 +36,7 @@ class Order:
 
     @customer.setter
     def customer(self, customer):
-        from classes.customer import Customer
+        from classes.Customer import Customer
         CUSTOMER_TYPE_IS_VALID = isinstance(customer, Customer)
         if CUSTOMER_TYPE_IS_VALID:
             self._customer = customer
@@ -49,7 +49,7 @@ class Order:
 
     @pizza.setter
     def pizza(self, pizza):
-        from classes.pizza import Pizza
+        from classes.Pizza import Pizza
         PIZZA_TYPE_IS_VALID = isinstance(pizza, Pizza)
         if PIZZA_TYPE_IS_VALID:
             self._pizza = pizza

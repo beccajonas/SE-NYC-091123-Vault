@@ -3,33 +3,25 @@ class Customer:
         self.name = name
         self.orders = []
         self.pizzas = []
-
+    
     @property
     def name(self):
         return self._name
-
+    
     @name.setter
     def name(self, name):
-        NAME_IS_STR = isinstance(name, str)
-        NAME_WITHIN_ACCEPTABLE_LENGTH = (1 <= len(name) <= 15)
-        if NAME_IS_STR and NAME_WITHIN_ACCEPTABLE_LENGTH:
-            self._name = name
-        else:
-            raise Exception("Unacceptable data format for `Customer.name`!")
+        if not isinstance(name, str) or len(name) > 15 or len(name) < 1:
+            raise Exception("Names must be at least 1 character and at most 15 characters long")
+        self._name = name
 
     def access_current_orders(self, new_order=None):
-        from classes.order import Order
-        ORDER_ALREADY_CREATED = (new_order is not None)
-        ORDER_TYPE_IS_VALID = isinstance(new_order, Order)
-        if ORDER_ALREADY_CREATED and ORDER_TYPE_IS_VALID:
+        from classes.Order import Order
+        if new_order is not None and isinstance(new_order, Order):
             self.orders.append(new_order)
         return self.orders
 
     def access_current_pizzas(self, new_pizza=None):
-        from classes.pizza import Pizza
-        PIZZA_ALREADY_CREATED = (new_pizza is not None)
-        PIZZA_TYPE_IS_VALID = isinstance(new_pizza, Pizza)
-        PIZZA_IS_UNIQUE = (new_pizza not in self.pizzas)
-        if PIZZA_ALREADY_CREATED and PIZZA_TYPE_IS_VALID and PIZZA_IS_UNIQUE:
+        from classes.Pizza import Pizza
+        if new_pizza is not None and isinstance(new_pizza, Pizza) and new_pizza not in self.pizzas:
             self.pizzas.append(new_pizza)
         return self.pizzas

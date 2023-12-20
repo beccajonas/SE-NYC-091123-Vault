@@ -1,8 +1,8 @@
 import pytest
 
-from classes.pizza import Pizza
-from classes.customer import Customer
-from classes.order import Order
+from classes.Pizza import Pizza
+from classes.Customer import Customer
+from classes.Order import Order
 
 class TestCustomer:
     ''' Testing class for assessing quality of `customer.Customer` object. '''
